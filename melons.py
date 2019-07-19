@@ -2,15 +2,12 @@
 
 class AbstractMelonOrder():
 
-    def __init__(self, species, qty, country_code = None):
+    def __init__(self, species, qty):
         """Initialize melon order attributes."""
 
         self.species = species
         self.qty = qty
         self.shipped = False
-
-        if country_code:
-            self.country_code = country_code
 
 
     def get_total(self):
@@ -44,7 +41,9 @@ class InternationalMelonOrder(AbstractMelonOrder):
     def __init__(self, species, qty, country_code):
         """Initialize international melon order attributes."""
         
-        super().__init__(species, qty, country_code)
+        self.country_code = country_code
+
+        super().__init__(species, qty)
         
 
     def get_country_code(self):
