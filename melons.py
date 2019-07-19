@@ -3,11 +3,16 @@
 from random import randrange
 import datetime
 
+class TooManyMelonsError(ValueError):
+    pass
+
 class AbstractMelonOrder():
 
     def __init__(self, species, qty):
         """Initialize melon order attributes."""
-
+        if qty > 100:
+            raise TooManyMelonsError
+            
         self.species = species
         self.qty = qty
         self.shipped = False
