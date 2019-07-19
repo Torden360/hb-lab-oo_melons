@@ -42,7 +42,7 @@ class InternationalMelonOrder(AbstractMelonOrder):
     tax = 0.17
 
     def __init__(self, species, qty, country_code):
-        """Initialize melon order attributes."""
+        """Initialize international melon order attributes."""
         
         super().__init__(species, qty, country_code)
         
