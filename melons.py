@@ -1,6 +1,7 @@
 """Classes for melon orders."""
 
 from random import randrange
+import datetime
 
 class AbstractMelonOrder():
 
@@ -14,7 +15,17 @@ class AbstractMelonOrder():
     def get_base_price(self):
         """Dynamic pricing algorithm."""
 
-        return randrange(5,10)
+        base_price = randrange(5,10)
+
+        # Monday is 0, Sunday is 6.
+        # 24-hour integer hour.
+        day = datetime.datetime.weekday(datetime.datetime.now())
+        hour = datetime.datetime.now().hour
+
+        if day in range(5) and hour in range(8, 12):
+            base_price += 4
+
+        return base_price
 
     def get_total(self):
         """Calculate price, including tax."""
